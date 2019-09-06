@@ -5,7 +5,10 @@
   "devDependencies": {
     "concurrently": "4.1.0",
     "react-router": "^5.0.1",
-    "react-scripts": "^2.1.1"
+    "react-scripts": "^2.1.1",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8",
+    "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
     "autoprefixer-stylus": "0.14.0",
@@ -20,10 +23,8 @@
     "stylus": "0.54.5"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "react-scripts start",
-    "watch": "concurrently --names \"webpack, stylus\" --prefix name \"npm run start\" \"npm run styles:watch\"",
-    "build": "react-scripts build",
+    "dev": "webpack-dev-server --port 8080 --compress --progress --watch --inline --hot",
+    "build": "webpack --progress",
     "eject": "react-scripts eject",
     "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
     "now-build": "npm run build && mv build dist",
