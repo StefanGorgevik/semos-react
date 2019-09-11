@@ -1,2 +1,27 @@
 # semos-react
  Semos react
+
+
+file .babelrc --> 
+
+
+{
+    "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
+ 
+to run --> npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev
+
+changes in webconfig --> add module: rules:
+
+npm i react-dom
+
+in react wrap elements <React.Fragment>
+            <div>Hello World</div>
+            <p>Hello</p>
+        </React.Fragment>
+
+every component in separate file --. export default User
+import User from './User' <-- in main file
+
+add a loader -->
+https://medium.com/a-beginners-guide-for-webpack-2/webpack-loaders-css-and-sass-2cc0079b5b3a
