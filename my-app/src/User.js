@@ -3,10 +3,16 @@ import React from 'react'
 const User = () => {
     return (
         <React.Fragment>
-            <div id='greeting' className='text'>Hello World</div>
-            <p>Hello</p>
+            <h1>User</h1>
+        </React.Fragment>
+    )
+}
+const UserInfo = () => {
+    return (
+        <React.Fragment>
+            <h3>User info</h3>
         </React.Fragment>
     )
 }
 
-export default User
+export {User, UserInfo}

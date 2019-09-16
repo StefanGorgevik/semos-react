@@ -1,0 +1,20 @@
+ul {
+    text-align:center; 
+    color: white;
+}
+
+li {
+    text-align: center;
+    
+    list-style: none;
+}
+
+li a {
+    text-decoration: none;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

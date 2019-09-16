@@ -10,22 +10,49 @@
 
 // newDiv();
 
-import ReactDOM from 'react-dom';
-import React from 'react';
-import User from './User'
-import Header from './Header'
-import Main from './Main'
-import './styles/style.css';
-const app = document.querySelector("#app");
+import ReactDOM from 'react-dom'
+import React from 'react'
 
-const Container = () => {
+//Components
+import Menu from './Menu'
+import Home from './Home'
+import Contact from './Contact'
+import About from './About'
+import Login from './Login'
+import {User, UserInfo} from './User'
+
+import './styles/style.css'
+const app = document.querySelector("#app")
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom"
+
+const Routes = () => {
     return (
-        <React.Fragment>
-            <Header/>
-            <Main/>
-            <User/>
-        </React.Fragment>
+    <Router>
+    <Menu/>
+        <Switch>
+            <Route exact path='/' component={Home}/>
+            <Route exact path='/contact' component={Contact}/>
+            <Route exact path='/login' component={Login}/>
+            <Route exact path='/about' component={About}/>
+            <Route exact path='/user' render={(props) => 
+                    <React.Fragment>
+                        <User {...props}/>
+                        <UserInfo {...props}/>
+                    </React.Fragment>
+            }/>
+        </Switch>
+    </Router>
     )
 }
 
-ReactDOM.render(<Container/>, app)
+// const Container = () => {
+//     return (
+//         <React.Fragment>
+//             <Header/>
+//             <Main/>
+//             <User/>
+//         </React.Fragment>
+//     )
+// }
+
+ReactDOM.render(<Routes/>, app)

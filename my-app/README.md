@@ -25,3 +25,13 @@ import User from './User' <-- in main file
 
 add a loader -->
 https://medium.com/a-beginners-guide-for-webpack-2/webpack-loaders-css-and-sass-2cc0079b5b3a
+
+
+--------------------------------------------------------------------------------
+4
+
+https://www.npmjs.com/package/source-map-loader
+
+https://www.npmjs.com/package/react-router-dom
+
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
