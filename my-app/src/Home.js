@@ -3,10 +3,10 @@ import './styles/main.css'
 
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom"
 
-const Home = () => {
+const Home = (props) => {
     return (
         <React.Fragment>
-            <h1>Home Page</h1>
+            <h1>Welcome!</h1>
         </React.Fragment>
     )
 }

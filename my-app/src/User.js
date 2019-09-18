@@ -1,18 +1,51 @@
 import React from 'react'
 
-const User = () => {
-    return (
-        <React.Fragment>
-            <h1>User</h1>
-        </React.Fragment>
-    )
-}
-const UserInfo = () => {
-    return (
-        <React.Fragment>
-            <h3>User info</h3>
-        </React.Fragment>
-    )
+class User extends React.Component {
+    render() {
+        return (
+            <React.Fragment>
+                <div style={{border:"1px solid black"}}>
+                    {this.props.name}
+                    <br/>
+                    {this.props.email}
+                    <button style={{marginLeft:" 30px"}}>Edit</button>
+                </div>
+            </React.Fragment>
+        )
+    }
 }
 
-export {User, UserInfo}
+
+export default User
+
+
+// const User = (props) => {
+//     return (
+//         <React.Fragment>
+//             {props.greeting}
+//             <h1 id="greeting" className='text'>Hello {props.name}!</h1>
+//         </React.Fragment>
+//     )
+// }
+
+// class InputUser extends React.Component {
+//     render() {
+//         return (
+//             <React.Fragment>
+//                 <input className="text-field" type="text" name="text" id="text"/>
+//             </React.Fragment>
+//         )
+//     }
+// }
+
+
+//ako ima potreba od state i constructor ti treba klasa
+// class User extends React.Component {
+//     render() {
+//         return (
+//             <React.Fragment>
+//                 <h1>Hello {this.props.name}!</h1>
+//             </React.Fragment>
+//         )
+//     }
+// }

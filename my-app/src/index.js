@@ -20,28 +20,28 @@ import Home from './Home'
 import Contact from './Contact'
 import About from './About'
 import Login from './Login'
-import {User, UserInfo} from './User'
+import Wrapper from './Wrapper'
+import Child from './Child'
+
 
 import './styles/style.css'
 const app = document.querySelector("#app")
 
 const Routes = () => {
     return (
-    <Router>
-    <Menu/>
-        <Switch>
-            <Route exact path='/' component={Home}/>
-            <Route exact path='/contact' component={Contact}/>
-            <Route exact path='/login' component={Login}/>
-            <Route exact path='/about' component={About}/>
-            <Route exact path='/user' render={(props) => 
-                    <React.Fragment>
-                        <User {...props}/>
-                        <UserInfo {...props}/>
-                    </React.Fragment>
-            }/>
-        </Switch>
-    </Router>
+        <Router>
+            <Menu />
+            <Switch>
+                <Route exact path='/' render={() => <Home name="Stefan" />} />/>
+                <Route exact path='/contact' component={Contact} />
+                <Route exact path='/login' component={Login} />
+                <Route exact path='/about' component={About} />
+                <Route exact path='/user' render={(props) =>
+                <Wrapper age="25">
+                    <Child/>
+                </Wrapper>} />
+            </Switch>
+        </Router>
     )
 }
 
@@ -55,4 +55,4 @@ const Routes = () => {
 //     )
 // }
 
-ReactDOM.render(<Routes/>, app)
+ReactDOM.render(<Routes />, app)

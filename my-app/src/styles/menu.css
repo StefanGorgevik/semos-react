@@ -1,11 +1,14 @@
 ul {
-    text-align:center; 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex: 1;
+    font-size: 18px;
     color: white;
 }
 
 li {
     text-align: center;
-    
     list-style: none;
 }
 
@@ -13,8 +16,7 @@ li a {
     text-decoration: none;
 }
 
-#header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+ul li:hover {
+    font-size: 20px;
+    color: grey;
 }
