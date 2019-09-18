@@ -12,6 +12,7 @@
 
 import ReactDOM from 'react-dom'
 import React from 'react'
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom"
 
 //Components
 import Menu from './Menu'
@@ -23,7 +24,6 @@ import {User, UserInfo} from './User'
 
 import './styles/style.css'
 const app = document.querySelector("#app")
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom"
 
 const Routes = () => {
     return (
