@@ -9,7 +9,6 @@ import User from './User'
 //                 <UserInfo name="i.name" email="i.email"/>
 //                 )
 //         }
-        
 // }}
 
 export default class Wrapper extends React.Component {
@@ -18,14 +17,35 @@ export default class Wrapper extends React.Component {
         users = data.map(element => {
             return (<User key={element.id} name={element.name} email={element.email}/>)
         })
+        console.log(users)
             return (
                 <React.Fragment>
+                <div style={{border: "5px solid rgba(230, 55, 170)"}}>
                  {users} 
                  {this.props.children}  
-                 {this.props.age}  
+                 <p>Age is: {this.props.age}</p>
+                </div>
                  </React.Fragment>
                  )
         }       
 }
+
+//funkcija
+// const Wrapper = (props) => {
+//     let users=[]
+//     users = data.map(element => {
+//         return (<User key={element.id} name={element.name} email={element.email}/>)
+//     })
+//     return (
+//         <React.Fragment>
+//             <div style={{ border: "5px solid rgba(230, 55, 170)" }}>
+//                 {users}
+//                 {props.children}
+//                 <p>Age is: {props.age}</p>
+//             </div>
+//         </React.Fragment>
+//     )
+// }
+// export default Wrapper
 
 //{this.props.children}    <Wrapper> <Heading/><Menu/> -->{this.props.children </Wrapper> to expect children components

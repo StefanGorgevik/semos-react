@@ -1,10 +1,11 @@
 import React from 'react'
 
 
-const Child = () => {
+const Child = (props) => {
     return (
         <React.Fragment>
-           <p>this is child</p>
+            <h5>Child</h5>
+           <h3 style={{border: "5px solid grey", color:"blue"}}>Child name: {props.name}</h3>
         </React.Fragment>
     )
 }

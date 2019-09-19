@@ -22,6 +22,7 @@ import About from './About'
 import Login from './Login'
 import Wrapper from './Wrapper'
 import Child from './Child'
+import Error from './Error'
 
 
 import './styles/style.css'
@@ -38,8 +39,9 @@ const Routes = () => {
                 <Route exact path='/about' component={About} />
                 <Route exact path='/user' render={(props) =>
                 <Wrapper age="25">
-                    <Child/>
+                    <Child name="stefan" style="1px solid grey"/>
                 </Wrapper>} />
+                <Route component={Error} />
             </Switch>
         </Router>
     )

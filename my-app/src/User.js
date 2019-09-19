@@ -1,20 +1,32 @@
 import React from 'react'
 
-class User extends React.Component {
-    render() {
-        return (
-            <React.Fragment>
-                <div style={{border:"1px solid black"}}>
-                    {this.props.name}
+// class User extends React.Component {
+//     render() {
+//         return (
+//             <React.Fragment>
+//                 <div style={{border:"1px solid black"}}>
+//                     {this.props.name}
+//                     <br/>
+//                     {this.props.email}
+//                     <button style={{marginLeft:" 30px"}}>Edit</button>
+//                 </div>
+//             </React.Fragment>
+//         )
+//     }
+// }
+
+const User = (props) => {
+    return (
+        <React.Fragment>
+            <div style={{border:"1px solid black"}}>
+                    {props.name}
                     <br/>
-                    {this.props.email}
+                    {props.email}
                     <button style={{marginLeft:" 30px"}}>Edit</button>
                 </div>
-            </React.Fragment>
-        )
-    }
+        </React.Fragment>
+    ) 
 }
-
 
 export default User
 
