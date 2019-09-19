@@ -15,14 +15,14 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom"
 
 //Components
-import Menu from './Menu'
-import Home from './Home'
-import Contact from './Contact'
-import About from './About'
-import Login from './Login'
-import Wrapper from './Wrapper'
-import Child from './Child'
-import Error from './Error'
+import Menu from './components/Menu'
+import Home from './components/Home'
+import Contact from './components/Contact'
+import About from './components/About'
+import Login from './components/Login'
+import Wrapper from './components/Wrapper'
+import Child from './components/Child'
+import Error from './components/Error'
 
 
 import './styles/style.css'

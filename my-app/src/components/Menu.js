@@ -1,5 +1,5 @@
 import React from 'react'
-import './styles/menu.css';
+import '../styles/menu.css'
 <button className="main-buttons" id="products-btn">Products</button>
 
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom"
