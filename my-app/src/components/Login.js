@@ -10,9 +10,8 @@ export default class Login extends React.Component  {
     }
 
     checkInput = (event) => {
-        const inputValue = event.target.value
         if(event.target.value.indexOf('@') <= 0 ) {
-            console.log('imas greska u mejlo')
+            console.log('You have an error in your mail.')
         }
         this.saveInput(event);
     }
