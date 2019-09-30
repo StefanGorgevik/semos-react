@@ -7,12 +7,14 @@ const main = document.querySelector(".main")
 import Home from './components/Home'
 import Main from './components/Main'
 import Header from './components/Header'
+import Event from './components/Event'
 
 const Routes = () => {
     return (
         <Router>
             <Switch>
                 <Route exact path="/" component={Home} />
+                <Route exact path="/event" component={Event} />
                 <Route exact path="/main" render={(props) => {
                     <React.Fragment>
                         <Header {...props} />

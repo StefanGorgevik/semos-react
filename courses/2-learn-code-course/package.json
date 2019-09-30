@@ -16,7 +16,7 @@
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "webpack": "^4.40.2",
-    "webpack-dev-server": "^3.8.0"
+    "webpack-dev-server": "^3.8.1"
   },
   "devDependencies": {},
   "scripts": {
