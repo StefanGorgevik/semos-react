@@ -11,9 +11,9 @@ export default class Wrapper extends React.Component {
     }
 
     expandForm = (event) => {
-        this.setState({ show: !this.state.show})
+        this.setState({ show: !this.state.show })
     }
-    
+
     render() {
         let users = []
         users = data.map(user => {
@@ -37,14 +37,14 @@ export default class Wrapper extends React.Component {
                         {users}
                     </tbody>
                 </table>
-                {this.state.show ? <ExpandForm key={data[event.target.id-1].id}
-                                                expandForm={this.expandForm}
-                                                id={data[event.target.id-1].id} 
-                                                name={data[event.target.id-1].name} 
-                                                email={data[event.target.id-1].email}
-                                                city={data[event.target.id-1].city}
-                                                age={data[event.target.id-1].age}
-                                                gender={data[event.target.id-1].gender}/>: null}
+                {this.state.show ? <ExpandForm key={data[event.target.id - 1].id}
+                    expandForm={this.expandForm}
+                    id={data[event.target.id - 1].id}
+                    name={data[event.target.id - 1].name}
+                    email={data[event.target.id - 1].email}
+                    city={data[event.target.id - 1].city}
+                    age={data[event.target.id - 1].age}
+                    gender={data[event.target.id - 1].gender} /> : null}
             </React.Fragment>
         )
     }

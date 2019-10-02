@@ -4,7 +4,7 @@ import '../styles/table.css'
 export default class User extends React.Component {
     constructor() {
         super()
-        this.state = {show:false}
+        this.state = { show: false }
     }
     render() {
         return (

@@ -39,3 +39,30 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 
 5
 
+-------------------------------------
+
+constructor() {}
+
+
+LIFECYCLE METHODS
+
+componentWillMount() {} xxxxx
+
+render() {}
+
+componentDidMount() {}  
+
+
+
+se povikuva posle promena vo state
+componentDidUpdate() {}   xxxxx 
+
+se povikuva posle promena vo props 
+componentWillReceiveProps() {} 
+
+componentWillUnmount() {} 
+componentDidUnmount() {} 
+
+
+
+https://www.npmjs.com/package/axios
