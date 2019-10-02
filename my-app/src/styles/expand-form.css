@@ -1,18 +1,56 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    background-color: #E5EDF5;
+    overflow-x: hidden;
+}
+
 .expand-div{
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin:auto;
     text-align: center;
+    position: fixed;
+    left: 600px;
+    top: 150px;
+    background-color: #313842;
+    border: 5px solid grey;
+    border-radius: 12px;
+    width: 350px;
 }
 
 form{
     display:flex;
     flex-direction: column;
     justify-content: center;
+    margin: auto;
 }
 
 button {
     width: 100px;
     margin: auto;
+    margin-top: 8px;
+    cursor: pointer;
+    border-radius: 5px;
 }
+
+label {
+    color: grey;
+}
+
+label, input {
+    display: block;
+    margin-top: 5px;
+}
+
+button:nth-last-of-type {
+    margin-bottom: 5px;
+}
+
+
+
+

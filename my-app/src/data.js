@@ -22,6 +22,14 @@ const data = [
         city: "Bitola",
         age: 22,
         gender: "Female"
+    },
+    {
+        id:4,
+        name: "Iva",
+        email: "iva@hotmail.com",
+        city: "Tetovo",
+        age: 20,
+        gender: "Female"
     }
 ]
 
