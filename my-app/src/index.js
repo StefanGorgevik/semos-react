@@ -37,10 +37,7 @@ const Routes = () => {
                 <Route exact path='/contact' component={Contact} />
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/about' component={About} />
-                <Route exact path='/user' render={(props) =>
-                <Wrapper age="25">
-                    <Child name="stefan" style="1px solid grey"/>
-                </Wrapper>} />
+                <Route exact path='/user' component={Wrapper}/>            
                 <Route component={Error} />
             </Switch>
         </Router>

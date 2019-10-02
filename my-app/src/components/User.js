@@ -1,4 +1,27 @@
 import React from 'react'
+import '../styles/table.css'
+
+export default class User extends React.Component {
+    constructor() {
+        super()
+        this.state = {show:false}
+    }
+    render() {
+        return (
+            <React.Fragment>
+                <tr>
+                    <td>{this.props.id}</td>
+                    <td>{this.props.name}</td>
+                    <td>{this.props.email}</td>
+                    <td>{this.props.city}</td>
+                    <td>{this.props.age}</td>
+                    <td>{this.props.gender}</td>
+                    <td><button id={this.props.id} onClick={this.props.expandForm}>Expand</button></td>
+                </tr>
+            </React.Fragment>
+        )
+    }
+}
 
 // class User extends React.Component {
 //     render() {
@@ -14,21 +37,6 @@ import React from 'react'
 //         )
 //     }
 // }
-
-const User = (props) => {
-    return (
-        <React.Fragment>
-            <div style={{border:"1px solid black"}}>
-                    {props.name}
-                    <br/>
-                    {props.email}
-                    <button style={{marginLeft:" 30px"}}>Edit</button>
-                </div>
-        </React.Fragment>
-    ) 
-}
-
-export default User
 
 
 // const User = (props) => {
