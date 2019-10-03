@@ -1,15 +1,26 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+import "../assets/styles/header.css"
 
 const Header = () => {
     return (
-        <Router>
-            <Switch>
-                <header>
-                    <Link to="/photos">Photos</Link>
-                    <Link to="/description">Description</Link>
-                </header>
-            </Switch>
-        </Router>
+                <React.Fragment>
+                    <header className="header">
+                        <ul>
+                            <li>
+                                <Link to="/photos">Photos</Link>
+                            </li>
+                            <li>
+                                <Link to="/description">Description</Link>
+                            </li>
+                            <li>
+                                <Link to="/table">Table</Link>
+                            </li>
+                        </ul>
+
+                    </header>
+                </React.Fragment>
     )
 }
 

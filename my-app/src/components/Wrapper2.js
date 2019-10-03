@@ -20,7 +20,7 @@ export default class Wrapper2 extends React.Component {
             .then((response) => {
                 this.setState({ newData: response.data })
                 const users = response.data.map(user => {
-                    return (<User2 key={user.id} address={user.address.street} expandForm={this.expandForm} id={user.id} name={user.name} email={user.email} />)
+                    <User2 key={user.id} address={user.address.street} expandForm={this.expandForm} id={user.id} name={user.name} email={user.email} />
                 })
                 this.setState({ data: users })
             })

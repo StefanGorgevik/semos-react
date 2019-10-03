@@ -7,9 +7,6 @@ export default class Event extends React.Component {
     }
 
     changeText(event) {
-        console.log(event)
-        console.log(event.target)
-        console.log(event.target.type)
         this.setState ({name: "Majkl"})
     }
 

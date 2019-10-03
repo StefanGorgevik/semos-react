@@ -1,0 +1,28 @@
+.header {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    align-items: center;
+    background-color: grey;
+    height: 40px;
+    border-bottom: 3px solid rgb(25, 25, 31)
+}
+
+.header ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.header ul li a {
+    text-decoration: none;
+    color: white;
+    margin-left: 40px;
+}
+
+.header a:hover {
+    font-size: 22px;
+}
+
+.header ul li {
+    list-style-type: none;
+}

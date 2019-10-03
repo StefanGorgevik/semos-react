@@ -15,13 +15,13 @@
     padding-bottom: 10%;
 }
 
-h1,h3,h4{
+.home-div h1,h3,h4{
     margin-bottom: 20px;
 }
-h4{
+.home-div h4{
     margin-top: 80px;
 }
-a {
+.home-div a {
     text-decoration: none;
     border: 1px solid black;
     background-color: grey;
