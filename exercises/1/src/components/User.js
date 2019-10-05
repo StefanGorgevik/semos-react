@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class Users extends React.Component {
+export default class User extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -8,7 +8,7 @@ export default class Users extends React.Component {
         }
     }
     render() {
-        return(
+        return (
             <React.Fragment>
                 <tbody>
                     <tr>

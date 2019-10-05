@@ -2,7 +2,6 @@ const path = require('path');
 
 module.exports = {
     entry: "./src/index.js",
-    mode: 'development',
     output: {
         path: path.resolve(__dirname, 'src'),
         filename: 'bundle.js',
@@ -15,7 +14,8 @@ module.exports = {
         port: 8080,
         historyApiFallback: true
         // publicPath: '/src'
-    },
+      },
+
     module: {
       rules: [
         {
