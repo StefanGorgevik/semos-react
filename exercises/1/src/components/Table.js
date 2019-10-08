@@ -2,6 +2,8 @@ import React from 'react'
 
 import axios from 'axios'
 import User from './User'
+import ExpandForm from './ExpandForm'
+import ExpandAddress from './ExpandAddress'
 
 export default class Table extends React.Component {
     constructor(props) {
@@ -12,14 +14,21 @@ export default class Table extends React.Component {
         }
     }
 
-   
+    expandForm = (event) => {
+        this.setState({ show: !this.state.show })
+    }
+
+    expandAddress = (event) => {
+        this.setState({ show: !this.state.show })
+    }
+
+
     componentDidMount() {
         axios.get('https://jsonplaceholder.typicode.com/users')
             .then((response) => {
                 this.setState({ newData: response.data })
-                console.log(response.data)
                 const users = response.data.map((user) => {
-                   return (<User key={user.id} address={user.address.street} id={user.id} name={user.name} username={user.username} email={user.email} />)
+                    return (<User key={user.id} expandForm={this.expandForm} expandAddress={this.expandAddress} address={user.address.street} id={user.id} name={user.name} username={user.username} email={user.email} />)
                 })
                 this.setState({ data: users })
             })
@@ -32,28 +41,29 @@ export default class Table extends React.Component {
     render() {
         return (
             <React.Fragment>
-                    <table style={{ border: '1px solid black' }}>
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Address</th>
-                                <th>Tools</th>
-                            </tr>
-                        </thead>
-                        {this.state.data}
-                    </table>
+                <table style={{ border: '1px solid black' }}>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th id={this.state.newData.id} onClick={this.expandAddress}>Address</th>
+                            <th>Tools</th>
+                        </tr>
+                    </thead>
+                    {this.state.data}
+                </table>
+
+                {this.state.show ? <ExpandForm id={this.state.newData[event.target.id - 1].id}
+                    key={this.state.newData[event.target.id - 1].id}
+                    name={this.state.newData[event.target.id - 1].name}
+                    username={this.state.newData[event.target.id - 1].username}
+                    email={this.state.newData[event.target.id - 1].email}
+                    street={this.state.newData[event.target.id - 1].address.street}
+                /> : null}
+                {this.state.show ? <ExpandAddress /> : null}
             </React.Fragment>
         )
     }
 }
-
-
-// {this.state.show ? <ExpandForm2 key={this.users[event.target.id - 1].id}
-// expandForm={this.expandForm}
-// id={this.users[event.target.id - 1].id}
-// name={this.users[event.target.id - 1].name}
-// email={this.users[event.target.id - 1].email}
-// /> : null}
