@@ -18,15 +18,10 @@ export default class Table extends React.Component {
         this.setState({ show: !this.state.show })
     }
 
-    expandAddress = (event) => {
-        this.setState({ show: !this.state.show })
-    }
-
-
     componentDidMount() {
         axios.get('https://jsonplaceholder.typicode.com/users')
             .then((response) => {
-                this.setState({ newData: response.data })
+                this.setState({ newData: response.data })             
                 const users = response.data.map((user) => {
                     return (<User key={user.id} expandForm={this.expandForm} expandAddress={this.expandAddress} address={user.address.street} id={user.id} name={user.name} username={user.username} email={user.email} />)
                 })
@@ -48,7 +43,7 @@ export default class Table extends React.Component {
                             <th>Name</th>
                             <th>Username</th>
                             <th>Email</th>
-                            <th id={this.state.newData.id} onClick={this.expandAddress}>Address</th>
+                            <th>Address</th>
                             <th>Tools</th>
                         </tr>
                     </thead>
