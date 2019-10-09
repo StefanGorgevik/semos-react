@@ -11,6 +11,7 @@ a {
     position: relative;
     width: 64px;
     height: 64px;
+    margin-left: 500px;
   }
   .lds-facebook div {
     display: inline-block;

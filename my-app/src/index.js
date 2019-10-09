@@ -23,6 +23,7 @@ import Login from './components/Login'
 import Wrapper from './components/Wrapper'
 import Wrapper2 from './components/Wrapper2'
 import Child from './components/Child'
+import Table from './components/Table'
 import Error from './components/Error'
 
 
@@ -39,7 +40,7 @@ const Routes = () => {
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/about' component={About} />
                 <Route exact path='/user' component={Wrapper}/>            
-                <Route exact path='/second' component={Wrapper2}/>             
+    <Route exact path='/second' render= {() => <Wrapper2 component={Table}  url={'https://jsonplaceholder.typicode.com/users'}/> } />        
                 <Route component={Error} />
             </Switch>
         </Router>

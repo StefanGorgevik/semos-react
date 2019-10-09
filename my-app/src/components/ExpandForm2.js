@@ -9,7 +9,6 @@ export default class ExpandForm extends React.Component {
     render() {
         return (
             <React.Fragment>
-
                 <div className='expand-div'>
                     <h2>User Data</h2>
                     <form>
@@ -22,8 +21,8 @@ export default class ExpandForm extends React.Component {
                         <label>Email
                             <input type='text' defaultValue={this.props.email} />
                         </label>
-                        <label>Street
-                            <input type='text' defaultValue={this.props.address} />
+                        <label>Phone
+                            <input type='text' defaultValue={this.props.phone} />
                         </label>
                     </form>
                     <button>Save</button>
