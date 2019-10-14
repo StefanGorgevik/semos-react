@@ -39,8 +39,8 @@ const Routes = () => {
                 <Route exact path='/contact' component={Contact} />
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/about' component={About} />
-                <Route exact path='/user' component={Wrapper}/>            
-    <Route exact path='/second' render= {() => <Wrapper2 component={Table}  url={'https://jsonplaceholder.typicode.com/users'}/> } />        
+                <Route exact path='/user' component={Wrapper} />
+                <Route exact path='/second' render={() => <Wrapper2 component={Table} url={'https://jsonplaceholder.typicode.com/users'} />} />
                 <Route component={Error} />
             </Switch>
         </Router>
