@@ -1,5 +1,4 @@
 import React from 'react'
-import Table from './Table'
 import Error from './Error'
 import Loading from './Loading'
 import axios from 'axios'
@@ -23,7 +22,6 @@ export default class Wrapper2 extends React.Component {
             })
             .catch((error) => {
                 this.setState({ error: <Error />, loading: false })
-
             })
     }
 

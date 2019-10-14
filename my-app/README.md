@@ -66,3 +66,14 @@ componentDidUnmount() {}
 
 
 https://www.npmjs.com/package/axios
+
+------------
+
+actions - definira promena
+    type = unique id
+    payload = new state
+
+    dispatch = izvrsuvanje na action 
+
+reducers - opishuva sostojba i ja vrshi promenata
+    ALWAYS returns a new state

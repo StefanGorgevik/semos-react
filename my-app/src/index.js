@@ -1,15 +1,3 @@
-// alert("Hello World");
-
-// const newDiv = () => {
-//     const div = document.createElement("div");
-//     div.innerHTML = "<form><label>Username:<input type='text'></label><form>" 
-//     const div2 = document.createElement("div");
-//     div2.innerHTML = "<form><label>Email:<input type='email' required></label><input type='submit'><form>" 
-//     document.body.append(div, div2); 
-// }
-
-// newDiv();
-
 import ReactDOM from 'react-dom'
 import React from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom"
@@ -26,6 +14,8 @@ import Child from './components/Child'
 import Table from './components/Table'
 import Error from './components/Error'
 
+import { Provider } from 'react-redux'
+import store from './redux/store'
 
 import './styles/style.css'
 const app = document.querySelector("#app")
@@ -47,6 +37,27 @@ const Routes = () => {
     )
 }
 
+ReactDOM.render(
+    <Provider store={store}>
+        <Routes />
+    </Provider>, app)
+
+//--------------------------------------------------------
+
+// alert("Hello World");
+
+// const newDiv = () => {
+//     const div = document.createElement("div");
+//     div.innerHTML = "<form><label>Username:<input type='text'></label><form>" 
+//     const div2 = document.createElement("div");
+//     div2.innerHTML = "<form><label>Email:<input type='email' required></label><input type='submit'><form>" 
+//     document.body.append(div, div2); 
+// }
+
+// newDiv();
+
+//-------------------------------------------------------------
+
 // const Container = () => {
 //     return (
 //         <React.Fragment>
@@ -57,4 +68,3 @@ const Routes = () => {
 //     )
 // }
 
-ReactDOM.render(<Routes />, app)
