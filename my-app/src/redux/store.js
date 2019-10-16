@@ -3,11 +3,8 @@ import { createStore } from 'redux'
 //reducers
 import { userReducer } from './reducers/userReducer'
 
-const singleReducer = combineReducers({
-    userReducer,
-})
+const store = createStore(userReducer)
 
-const store = createStore(singleReducer)
-
+console.log(store.getState())
 
 export default store
