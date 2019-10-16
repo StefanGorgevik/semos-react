@@ -25,6 +25,19 @@
                     age: 25
                 }
             }
+
+            handleClick=(event) =>{
+               console.log(event.target)
+            }
+
+            handleMouseOver=(event) =>{
+               console.log(event.target, event.pageX)
+            }
+
+            handleCopy=(event) =>{
+               console.log("Try being original for once")
+            }
+
             render() {
                 const name = "stefan"
                 return (
@@ -33,6 +46,9 @@
                         <p>Hello, { name }</p>
                         <p>Mathrandom{ Math.random() * 10 }</p>
                         <p>Name: {this.state.name}, Age: { this.state.age }</p>
+                        <button onClick={this.handleClick}>Click Me</button>
+                        <button onMouseOver={this.handleMouseOver}>Hover Me</button>
+                        <p onCopy={this.handleCopy}>What we think, we become</p>
                     </div>
                 )
             }
