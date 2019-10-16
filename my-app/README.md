@@ -77,3 +77,7 @@ actions - definira promena
 
 reducers - opishuva sostojba i ja vrshi promenata
     ALWAYS returns a new state
+
+--------------------
+
+npm i --save redux-logger
