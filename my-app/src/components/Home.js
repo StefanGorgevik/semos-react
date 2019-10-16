@@ -1,11 +1,14 @@
 import React from 'react'
+import store from '../redux/store'
+import { addUser } from '../redux/actions/userActions'
 
 class Home extends React.Component {
     constructor (/*props*/) {
         super(/*props*/)
         /*Initial State*/ 
         this.state = {
-            show: false
+            show: false,
+            username: ""
         }
     }
     showOrHide = (event) => {
@@ -17,12 +20,23 @@ class Home extends React.Component {
             // }
     }
 
+    saveUser = (event) => {
+        this.setState({ [event.target.id]: event.target.value})
+    }
+
+    submitUsername= (event) => {
+        store.dispatch(addUser(this.state.username))
+    }
+
     /* Render Metod*/ 
     render () {
         return (
             <React.Fragment>
                 <button id='toggle'onClick={this.showOrHide} >Toggle me</button>
                 {this.state.show ? <div>Hello Semos!</div> : null}
+                <h1>Submit your username</h1>
+                <input id ='username' placeholder='username' onChange={this.saveUser} />
+                <button id='submit' onClick={this.submitUsername}>Log in!</button>
             </React.Fragment>
         )
 
