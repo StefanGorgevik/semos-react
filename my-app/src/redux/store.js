@@ -1,10 +1,18 @@
-import { createStore } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import logger from 'redux-logger'
 
 //reducers
-import { userReducer } from './reducers/userReducer'
+import { userReducer, userInputReducer } from './reducers/userReducer'
 
-const store = createStore(userReducer)
+const singleReducer = combineReducers({
+    userReducer,
+    userInputReducer
+})
 
-console.log(store.getState())
+const store = createStore(
+    singleReducer, 
+    applyMiddleware(logger)
+    )
+
 
 export default store

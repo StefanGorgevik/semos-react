@@ -25,6 +25,9 @@ const Menu = () => {
                     <li>
                         <Link to='/second'>Second</Link>
                     </li>
+                    <li>
+                        <Link to='/userinput'>User Input</Link>
+                    </li>
                 </ul>
             </div>
         </React.Fragment>

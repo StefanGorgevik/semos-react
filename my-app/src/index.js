@@ -13,6 +13,7 @@ import Wrapper2 from './components/Wrapper2'
 import Child from './components/Child'
 import Table from './components/Table'
 import Error from './components/Error'
+import UserInput from './components/UserInput'
 
 import { Provider } from 'react-redux'
 import store from './redux/store'
@@ -30,6 +31,7 @@ const Routes = () => {
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/about' component={About} />
                 <Route exact path='/user' component={Wrapper} />
+                <Route exact path='/userinput' component={UserInput} />
                 <Route exact path='/second' render={() => <Wrapper2 component={Table} url={'https://jsonplaceholder.typicode.com/users'} />} />
                 <Route component={Error} />
             </Switch>
