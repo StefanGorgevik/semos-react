@@ -22,12 +22,19 @@
                 super(props)
                 this.state = {
                     name: 'Stefan',
+                    lastname: 'Gorgevik',
                     age: 25
                 }
             }
 
             handleClick=(event) =>{
-               console.log(event.target)
+               if(this.state.name === 'Stefan') {
+                this.setState({name: 'Stef'})
+               }
+               else {
+                this.setState({name: 'Stefan'})
+               }
+              
             }
 
             handleMouseOver=(event) =>{
@@ -38,9 +45,19 @@
                console.log("Try being original for once")
             }
 
+           handleSubmit=(event) => {
+               event.preventDefault()
+                console.log('Form submitted', this.state.lastname)
+            }
+
+            handleChange=(event) => {
+                this.setState({ lastname: event.target.value })
+            }
+
             render() {
                 const name = "stefan"
                 return (
+                    <React.Fragment>
                     <div className="app-content">
                         <h1>Hey, ninjas</h1>
                         <p>Hello, { name }</p>
@@ -50,6 +67,15 @@
                         <button onMouseOver={this.handleMouseOver}>Hover Me</button>
                         <p onCopy={this.handleCopy}>What we think, we become</p>
                     </div>
+                    <br/>
+                    <div>
+                        <h1>Hi, my last name is {this.state.lastname}</h1>   
+                    <form onSubmit={this.handleSubmit}>
+                        <input id="lastname" type="text" onChange={this.handleChange} />
+                        <button id="submit">Submit</button> 
+                    </form>
+                    </div>
+                </React.Fragment>
                 )
             }
         }
