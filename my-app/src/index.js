@@ -14,6 +14,8 @@ import Child from './components/Child'
 import Table from './components/Table'
 import Error from './components/Error'
 import UserInput from './components/UserInput'
+import Weather from './components/Weather'
+import WeatherWrapper from './components/WeatherWrapper'
 
 import { Provider } from 'react-redux'
 import store from './redux/store'
@@ -32,6 +34,7 @@ const Routes = () => {
                 <Route exact path='/about' component={About} />
                 <Route exact path='/user' component={Wrapper} />
                 <Route exact path='/userinput' component={UserInput} />
+                <Route exact path='/weather' render={() => <WeatherWrapper component={Weather} url={'https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22'} />} />
                 <Route exact path='/second' render={() => <Wrapper2 component={Table} url={'https://jsonplaceholder.typicode.com/users'} />} />
                 <Route component={Error} />
             </Switch>

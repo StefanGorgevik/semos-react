@@ -28,6 +28,9 @@ const Menu = () => {
                     <li>
                         <Link to='/userinput'>User Input</Link>
                     </li>
+                    <li>
+                        <Link to='/weather'>Weather </Link>
+                    </li>
                 </ul>
             </div>
         </React.Fragment>
