@@ -26,7 +26,6 @@ class Home extends React.Component {
 
     submitUsername= (event) => {
         store.dispatch(addUser(this.state.username))
-        store.dispatch(addUser(this.state.password))
     }
 
     /* Render Metod*/ 

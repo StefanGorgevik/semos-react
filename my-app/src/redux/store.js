@@ -3,10 +3,12 @@ import logger from 'redux-logger'
 
 //reducers
 import { userReducer, userInputReducer } from './reducers/userReducer'
+import { weatherReducer } from './reducers/weatherReducer'
 
 const singleReducer = combineReducers({
     userReducer,
-    userInputReducer
+    userInputReducer,
+    weatherReducer
 })
 
 const store = createStore(

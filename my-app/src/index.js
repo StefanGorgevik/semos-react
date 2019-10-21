@@ -34,7 +34,7 @@ const Routes = () => {
                 <Route exact path='/about' component={About} />
                 <Route exact path='/user' component={Wrapper} />
                 <Route exact path='/userinput' component={UserInput} />
-                <Route exact path='/weather' render={() => <WeatherWrapper component={Weather} url={'https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22'} />} />
+                <Route exact path='/weather' render={() => <WeatherWrapper component={Weather} />} />
                 <Route exact path='/second' render={() => <Wrapper2 component={Table} url={'https://jsonplaceholder.typicode.com/users'} />} />
                 <Route component={Error} />
             </Switch>

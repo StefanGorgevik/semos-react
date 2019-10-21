@@ -23,11 +23,8 @@ export function addNewUser(name, address, phoneNumber) {
     }
 }
 
-export function deleteUser(name, address, phoneNumber) {
+export function deleteUser() {
     return {
-        type: 'DELETE_USER',
-        payload: {
-            name, address, phoneNumber
-        }
+        type: 'DELETE_USER'
     }
 }
