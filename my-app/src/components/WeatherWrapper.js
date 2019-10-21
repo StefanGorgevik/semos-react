@@ -1,6 +1,4 @@
 import React from 'react'
-import Error from './Error'
-import Loading from './Loading'
 import Weather from './Weather'
 import axios from 'axios'
 import { weatherAction } from '../redux/actions/weatherActions'
@@ -12,32 +10,32 @@ export default class WeatherWrapper extends React.Component {
         this.state = {
             data: [],
             show: false,
-            error: null,
-            loading: false
+            city: ''
         }
     }
 
-    componentDidMount() {
-        this.setState({ loading: true })
-        axios.get('http://api.openweathermap.org/data/2.5/weather?id=2172797&APPID=53f5c0ddbd1027bd5c15ed83cfb697be')
+    saveInput = (event) => {
+        this.setState({ city: event.target.value })
+    }
+
+    findCity() {
+        const newTown = document.querySelector('#search-town').value
+        axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${newTown}&APPID=53f5c0ddbd1027bd5c15ed83cfb697be`)
             .then((response) => {
-                this.setState({ data: response.data, loading: false })
-                submitWeather()
+                store.dispatch(weatherAction(response.data))
             })
             .catch((error) => {
-                this.setState({ error: <Error />, loading: false })
+                console.log(error)
             })
-    }
-    
-    submitWeather()  {
-        store.dispatch(weatherAction(this.state.data))
     }
 
     render() {
         return (
             <React.Fragment>
                 <h1>Welcome to the weather forecast!</h1>
-                <Weather/>
+                <input id="search-town" onChange={this.saveInput} type="text" />
+                <button onClick={this.findCity}>Search</button>
+                <Weather />
             </React.Fragment>
         )
     }

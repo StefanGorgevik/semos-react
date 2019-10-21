@@ -16,6 +16,7 @@ import Error from './components/Error'
 import UserInput from './components/UserInput'
 import Weather from './components/Weather'
 import WeatherWrapper from './components/WeatherWrapper'
+import Tabela from './components/Tabela'
 
 import { Provider } from 'react-redux'
 import store from './redux/store'
@@ -34,8 +35,9 @@ const Routes = () => {
                 <Route exact path='/about' component={About} />
                 <Route exact path='/user' component={Wrapper} />
                 <Route exact path='/userinput' component={UserInput} />
+                <Route exact path='/tabela' component={Tabela} />
                 <Route exact path='/weather' render={() => <WeatherWrapper component={Weather} />} />
-                <Route exact path='/second' render={() => <Wrapper2 component={Table} url={'https://jsonplaceholder.typicode.com/users'} />} />
+                <Route exact path='/second' render={() => <Wrapper2 component={Table} methodType='GET' url={'https://jsonplaceholder.typicode.com/users'} />} />
                 <Route component={Error} />
             </Switch>
         </Router>
