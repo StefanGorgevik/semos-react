@@ -31,6 +31,9 @@ const Menu = () => {
                     <li>
                         <Link to='/weather'>Weather </Link>
                     </li>
+                    <li>
+                        <Link to='/tabela'>Tabela </Link>
+                    </li>
                 </ul>
             </div>
         </React.Fragment>

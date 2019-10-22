@@ -8,21 +8,15 @@ class Weather extends React.Component {
             show: false
         }
     }
-
+    componentDidMount() {
+        console.log(this.props.weather.weather[0])
+    }
 
     render() {
+        console.log(this.props.weather.weather[0])
         return (
             <React.Fragment>
-                {/* <h1>Pick a city and see its forecast!</h1>
-                <label>Enter a city:
-                     <input type='text' placeholder="City" />
-                </label>
-                <button>Submit!</button>
-                 <div>{nesto}</div>  */}
-    
-                <p>Name: {this.props.weather.name}</p>
-                <p>ID: {this.props.weather.id}</p>
-                <p>Temperature: {this.props.weather.temp}</p>
+              <h1>Weather</h1>
             </React.Fragment>
         )
     }
