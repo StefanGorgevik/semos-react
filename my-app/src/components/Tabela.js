@@ -7,7 +7,7 @@ class Tabela extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            show: null,
+            showModal: null,
             data: null
         }
     }
@@ -24,15 +24,25 @@ class Tabela extends React.Component {
 
     addUser = () => {
         this.setState({
-            show:
-                <div></div>
+            showModal:
+                <div>
+                    <input placeholder='name' />
+                    <input placeholder='username' />
+                    <input placeholder='email' />
+                    <input placeholder='address' />
+                </div>
         })
     }
 
     editUser = (user) => {
         this.setState({
-            show:
-                <div></div>
+            showModal:
+                <div>
+                    <input defaultValue={user.name} />
+                    <input defaultValue={user.username} />
+                    <input defaultValue={user.email} />
+                    <input defaultValue={user.address} />
+                </div>
         })
     }
 
