@@ -1,0 +1,15 @@
+.add-todo {
+    display: inline-block;
+}
+
+.add-todo label {
+    color: black;
+}
+
+.todos {
+    display: flex;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+ 
