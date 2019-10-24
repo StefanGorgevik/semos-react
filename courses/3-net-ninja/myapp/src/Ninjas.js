@@ -1,15 +1,17 @@
 import React from 'react'
+import './Ninjas.css'
 
-const Ninjas = ({ ninjas }) => {
+const Ninjas = ({ ninjas, deleteNinja }) => {
     return (
         <div className="ninja-list">
             {
                 ninjas.map(ninja => {
-                    return ninja.age > 24 ? (
+                    return ninja.age > 18 ? (
                         <div className="ninja" key={ninja.id}>
                             <div>Name: {ninja.name} </div>
                             <div>Age: {ninja.age} </div>
                             <div>Belt: {ninja.belt} </div>
+                            <button onClick={() => deleteNinja(ninja.id)}>Delete ninja</button>
                         </div>
                     ) : null
                 })

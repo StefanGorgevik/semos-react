@@ -18,7 +18,7 @@ export default class AddNinja extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        console.log(this.state)
+        this.props.addNinja(this.state)
     }
 
     render() {
