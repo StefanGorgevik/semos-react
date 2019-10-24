@@ -1,6 +1,6 @@
 import React from 'react'
-import Error from './Error'
-import Loading from './Loading'
+import Error from '../Error'
+import Loading from '../Loading'
 import axios from 'axios'
 
 export default class Wrapper2 extends React.Component {

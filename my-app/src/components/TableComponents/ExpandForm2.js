@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/expand-form.css'
+import '../../styles/expand-form.css'
 
 export default class ExpandForm extends React.Component {
     constructor() {

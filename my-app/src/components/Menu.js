@@ -19,6 +19,11 @@ const Menu = () => {
                     <li>
                         <Link to='/login'>Login</Link>
                     </li>
+                </ul>
+            </div>
+            <hr />
+            <div className="menu-div">
+                <ul>
                     <li>
                         <Link to='/user'>User</Link>
                     </li>
@@ -33,6 +38,9 @@ const Menu = () => {
                     </li>
                     <li>
                         <Link to='/tabela'>Tabela </Link>
+                    </li>
+                    <li>
+                        <Link to='/todos'>Todos</Link>
                     </li>
                 </ul>
             </div>

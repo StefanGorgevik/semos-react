@@ -2,7 +2,7 @@ import React from 'react'
 import Users from './Users'
 
 import ExpandForm2 from './ExpandForm2'
-import '../styles/main.css'
+import '../../styles/main.css'
 
 export default class Table extends React.Component {
     constructor(props) {

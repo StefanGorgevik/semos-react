@@ -1,8 +1,8 @@
 import React from 'react'
 import Weather from './Weather'
 import axios from 'axios'
-import { weatherAction } from '../redux/actions/weatherActions'
-import store from '../redux/store'
+import { weatherAction } from '../../redux/actions/weatherActions'
+import store from '../../redux/store'
 
 export default class WeatherWrapper extends React.Component {
     constructor(props) {

@@ -1,8 +1,8 @@
 import React from 'react'
-import data from '../data.js'
+import data from '../../data.js'
 import User from './User'
 import ExpandForm from './ExpandForm'
-import '../styles/wrapper.css'
+import '../../styles/wrapper.css'
 
 export default class Wrapper extends React.Component {
     constructor() {

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/table.css'
+import '../../styles/table.css'
 
 export default class User extends React.Component {
     constructor() {

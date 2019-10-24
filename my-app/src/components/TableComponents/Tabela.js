@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { writeUsersToStore } from '../redux/actions/writeUsersToStore'
+import { writeUsersToStore } from '../../redux/actions/writeUsersToStore'
 
 class Tabela extends React.Component {
     constructor(props) {
