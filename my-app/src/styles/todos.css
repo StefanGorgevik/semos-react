@@ -1,3 +1,11 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+}
+
 .add-todo {
     display: inline-block;
 }
@@ -12,4 +20,15 @@
     border-radius: 5px;
 }
 
- 
+.todos button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 auto;
+    margin: 10px 10px;
+}
+
+.todos button:hover {
+    transition: 0s all;
+    font-size: 20px;
+}
