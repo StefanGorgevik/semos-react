@@ -16,7 +16,7 @@ export default class EditTodos extends React.Component {
     }
 
     submitChange = (event) => {
-
+        console.log(event.target.value)
     }
 
     render() {

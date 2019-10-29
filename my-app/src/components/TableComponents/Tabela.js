@@ -1,20 +1,20 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { writeUsersToStore } from '../../redux/actions/writeUsersToStore'
+import { writeUsersToStore, addUserToStore } from '../../redux/actions/writeUsersToStore'
 
 class Tabela extends React.Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
-            showModal: null,
-            data: null
+            showModal: null
         }
     }
+
     componentDidMount() {
         axios.get('https://jsonplaceholder.typicode.com/users')
             .then((response) => {
-                // store.dispatch(fun(response.data))
+                // zamena za dispatch
                 this.props.writeUsersToStore(response.data)
             })
             .catch((error) => {
@@ -25,11 +25,18 @@ class Tabela extends React.Component {
     addUser = () => {
         this.setState({
             showModal:
-                <div>
-                    <input placeholder='name' />
-                    <input placeholder='username' />
-                    <input placeholder='email' />
-                    <input placeholder='address' />
+                <div className='my-modal'>
+                    <div className='form-container'>
+                        <div className='text-container'>Add new user</div>
+                        <input id='name' type='text' className='form-control' placeholder='name' />
+                        <input id='username' type='text' className='form-control' placeholder='username' />
+                        <input id='email' type='text' className='form-control' placeholder='email' />
+                        <input id='address' type='text' className='form-control' placeholder='address' />
+                        <button id='save' className='btn btn-success'
+                            onClick={this.saveUser}>Save</button>
+                        <button id='close' className='btn btn-secondary'
+                            onClick={() => this.setState({ showModal: null })}>Close</button>
+                    </div>
                 </div>
         })
     }
@@ -37,22 +44,38 @@ class Tabela extends React.Component {
     editUser = (user) => {
         this.setState({
             showModal:
-                <div>
-                    <input defaultValue={user.name} />
-                    <input defaultValue={user.username} />
-                    <input defaultValue={user.email} />
-                    <input defaultValue={user.address} />
+                <div className='my-modal'>
+                    <div className='form-container'>
+                        <div className='text-container'>Edit user</div>
+                        <input id='name' type='text' className='form-control' defaultValue={user.name} />
+                        <input id='username' type='text' className='form-control' defaultValue={user.username} />
+                        <input id='email' type='text' className='form-control' defaultValue={user.email} />
+                        <input id='address' type='text' className='form-control' defaultValue={
+                            user.address.city + ' ' + user.address.street + ' ' + user.address.suite} />
+                        <button id='save' className='btn btn-success'
+                            onClick={() => this.saveUser(user.id)}>Save</button>
+                        <button id='close' className='btn btn-secondary'
+                            onClick={() => this.setState({ showModal: null })}>Close</button>
+                    </div>
                 </div>
         })
+    }
+
+    saveUser = (id) => {
+        const newUser = {
+            id: id,
+            name: document.getElementById('name').value,
+            username: document.getElementById('username').value,
+            email: document.getElementById('email').value,
+            address: document.getElementById('address').value
+        }
+        this.props.addUserToStore(newUser)
     }
 
     render() {
         let header = null
         let usersList = null
         if (this.props.users) {
-            // header = this.props.users.map((user) => {
-            //     return <td></td>
-            // })
             usersList = this.props.users.map((user) => {
                 return <tr key={user.id}>
                     <td>{user.name}</td>
@@ -62,22 +85,26 @@ class Tabela extends React.Component {
                         {`${user.address.street} ${user.address.suite}`}
                     </td>
                     <td>
-                        <button id='edit' onClick={() => this.editUser(user)}>Edit</button>
+                        <button id='edit' className='btn btn-light' onClick={() => this.editUser(user)}>
+                            Edit
+                        </button>
                     </td>
                 </tr>
             })
         }
         return (
-            <React.Fragment>.
-                <button id="add" onClick={this.addUser}>Add new user</button>
-                <table style={{ border: '1px solid black' }}>
+            <React.Fragment>
+                <button id='add' className='btn btn-success' onClick={this.addUser}>
+                    Add new user
+                </button>
+                <table className='table table-dark'>
+                    {this.state.showModal}
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Username</th>
-                            <th>E-Mail</th>
-                            <th>Street Address</th>
-                            <th>Tools</th>
+                            <th> Name </th>
+                            <th> Username </th>
+                            <th> Email </th>
+                            <th> Address </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -97,7 +124,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        writeUsersToStore: (data) => dispatch(writeUsersToStore(data))   //za poveke parametri ...params
+        writeUsersToStore: (data) => dispatch(writeUsersToStore(data)),
+        addUserToStore: (data) => dispatch(addUserToStore(data))   //za poveke parametri ...params
     }
 }
 

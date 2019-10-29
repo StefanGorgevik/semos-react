@@ -1,11 +1,11 @@
-export function userTableReducer(state = { users: [] }, action) {
+export function todoReducer(state = { todos: [] }, action) {
     switch (action.type) {
-        case 'WRITE_USERS': {
+        case 'WRITE_TODOS': {
             return {
                 ...state, users: action.payload
             }
         }
-        case 'SAVE_USER': {
+        case 'SAVE_TODO': {
             const newUser = action.payload
             let newArray = []
             if (!newUser.id) {
