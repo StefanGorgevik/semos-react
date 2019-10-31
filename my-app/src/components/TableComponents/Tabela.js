@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { writeUsersToStore, addUserToStore } from '../../redux/actions/writeUsersToStore'
+import { writeUsersToStore, addUserToStore, removeUserFromStore } from '../../redux/actions/writeUsersToStore'
 
 class Tabela extends React.Component {
     constructor() {
@@ -61,6 +61,10 @@ class Tabela extends React.Component {
         })
     }
 
+    deleteUser = (user) => {
+        this.props.removeUserFromStore(user)
+    }
+
     saveUser = (id) => {
         const newUser = {
             id: id,
@@ -70,6 +74,7 @@ class Tabela extends React.Component {
             address: document.getElementById('address').value
         }
         this.props.addUserToStore(newUser)
+        this.setState({ showModal: null })
     }
 
     render() {
@@ -87,6 +92,10 @@ class Tabela extends React.Component {
                     <td>
                         <button id='edit' className='btn btn-light' onClick={() => this.editUser(user)}>
                             Edit
+                        </button>
+                        <button id='delete' className='btn btn-danger'
+                            onClick={() => this.deleteUser(user)}>
+                            Delete
                         </button>
                     </td>
                 </tr>
@@ -125,7 +134,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         writeUsersToStore: (data) => dispatch(writeUsersToStore(data)),
-        addUserToStore: (data) => dispatch(addUserToStore(data))   //za poveke parametri ...params
+        addUserToStore: (data) => dispatch(addUserToStore(data)),   //za poveke parametri ...params
+        removeUserFromStore: (data) => dispatch(removeUserFromStore(data))
     }
 }
 

@@ -5,6 +5,7 @@ import logger from 'redux-logger'
 import { userReducer, userInputReducer } from './reducers/userReducer'
 import { weatherReducer } from './reducers/weatherReducer'
 import { userTableReducer } from './reducers/userTableReducer'
+import thunk from 'redux-thunk'
 
 const singleReducer = combineReducers({
     userReducer,
@@ -15,7 +16,7 @@ const singleReducer = combineReducers({
 
 const store = createStore(
     singleReducer, 
-    applyMiddleware(logger)
+    applyMiddleware(logger, thunk)
     )
 
 

@@ -1,3 +1,6 @@
+
+import axios from "axios"
+
 export function writeUsersToStore(data) {
     return {
         type: "WRITE_USERS",
@@ -5,10 +8,12 @@ export function writeUsersToStore(data) {
     }
 }
 
-export function addUserToStore(data) {
-    return {
-        type: "SAVE_USER",
-        payload: data
+export function addUserToStore (user) {
+    return function (dispatch) {
+        dispatch({
+            type: 'SAVE_USER',
+            payload: user
+        })
     }
 }
 
