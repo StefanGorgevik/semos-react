@@ -16,7 +16,7 @@
 
 .todos {
     display: flex;
-    border: 1px solid black;
+    border: 5px solid black;
     border-radius: 5px;
 }
 
@@ -31,4 +31,9 @@
 .todos button:hover {
     transition: 0s all;
     font-size: 20px;
+}
+
+.todo {
+    padding-left: 10px;
+    padding-right: 10px;
 }

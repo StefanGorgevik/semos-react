@@ -1,56 +1,62 @@
 import React, { Component } from 'react'
-import Todos from './Todos'
-import AddTodo from './AddTodo'
-import EditTodos from './EditTodos'
 import '../../styles/todos.css'
+import { connect } from 'react-redux'
+import { addTodo } from '../../redux/actions/todoActions'
 
-export default class Main extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            todos: [
-                { id: 1, todo: "walk the dog" },
-                { id: 2, todo: "do shopping" }
-            ],
-            show: false,
-            new: null
+class Main extends Component {
+    state = {
+        todo: ''
+    }
+    saveTodo = (event) => {
+        this.setState({todo: event.target.value})
+    }
+    handleSubmit = (event) => {
+        event.preventDefault()
+        const newTodo = {
+            id: Math.floor(Math.random() * 100),
+            todo: this.state.todo
         }
-    }
-
-    showEdit = (id) => {
-        this.setState({ show: !this.state.show })
-        let todos = this.state.todos.filter(todo => {
-            return todo.id !== id
-        })
-        this.setState({new: todos})
-    }
-
-    addTodo = (todo) => {
-        todo.id = Math.floor(Math.random() * 50)
-        let todos = [...this.state.todos, todo]
-        this.setState({ todos: todos })
-    }
-
-    deleteTodo = (id) => {
-        let todos = this.state.todos.filter(todo => {
-            return todo.id !== id
-        })
-        this.setState({ todos: todos })
+        this.props.addTodo(newTodo)
     }
 
     render() {
+        const { todos } = this.props
+        console.log(this.props)
+        const todoList = todos.map(todo => {
+            return (
+                <div className='todos' key={todo.id}>
+                    <p className="todo">{todo.id} : {todo.todo}</p>
+                </div>
+            )
+        })
         return (
             <div className='main'>
-                <h1>Todos</h1>
-                <AddTodo addTodo={this.addTodo} />
-                <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} showEdit={this.showEdit} />
-                {this.state.show ? <EditTodos
-                    showEdit={this.showEdit}
-                    key={this.state.new}
-                    todo={this.state.new}
-                />
-                    : null}
+              <h1>Todos</h1>
+                {todoList}
+                <div className="add-todo">
+                    <h3>Enter a new todo</h3>
+                    <form>
+                        <label>Add a todo:
+                        <input type="text" id="todo" onChange={this.saveTodo}/>
+                        </label>
+                        <button onClick={this.handleSubmit}>Submit</button>
+                    </form>
+                </div>
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        todos: state.todoReducer.todos
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addTodo: (todo) => {dispatch(addTodo(todo))}
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main)

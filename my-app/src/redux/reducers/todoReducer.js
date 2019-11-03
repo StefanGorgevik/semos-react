@@ -1,37 +1,19 @@
-export function todoReducer(state = { todos: [] }, action) {
+const initState = {
+    todos: [
+        { id: 1, todo: "walk the dog" },
+        { id: 2, todo: "do shopping" }
+    ]
+}
+
+export const todoReducer = (state = initState, action) => {
     switch (action.type) {
-        case 'WRITE_TODOS': {
-            return {
-                ...state, users: action.payload
-            }
-        }
-        case 'SAVE_TODO': {
-            const newUser = action.payload
-            let newArray = []
-            if (!newUser.id) {
-                newArray = state.users.slice()
-                newUser.id = state.users.length + 1
-                newArray.push(newUser)
-            } else {
-                newArray = state.users.slice()
-                for (let i = 0; i < newArray.length; i++) {
-                    if (newArray[i].id === newUser.id) {
-                        newArray.splice(i, 1, newUser)
-                        break
-                    }
-                }
-            }
-            return {
-                ...state, users: newArray
-            }
-        }
-        case 'DELETE_USER': {
-            return {
-                ...state
-            }
+        case 'ADD_TODO': {
+            console.log(action.todo)
+            const newTodos = state.todos.push(action.todo)
+            return { ...state, todos: newTodos }
         }
         default: {
-            return { ...state }
+            return state
         }
     }
 }

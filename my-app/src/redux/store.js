@@ -1,17 +1,19 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import logger from 'redux-logger'
+import thunk from 'redux-thunk'
 
 //reducers
 import { userReducer, userInputReducer } from './reducers/userReducer'
 import { weatherReducer } from './reducers/weatherReducer'
 import { userTableReducer } from './reducers/userTableReducer'
-import thunk from 'redux-thunk'
+import { todoReducer } from './reducers/todoReducer'
 
 const singleReducer = combineReducers({
     userReducer,
     userInputReducer,
     weatherReducer,
-    userTableReducer
+    userTableReducer,
+    todoReducer
 })
 
 const store = createStore(
