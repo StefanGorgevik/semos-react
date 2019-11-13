@@ -18,6 +18,9 @@ class Main extends Component {
         }
         this.props.addTodo(newTodo)
     }
+    editTodo = () => {
+
+    }
 
     render() {
         const { todos } = this.props
@@ -26,6 +29,7 @@ class Main extends Component {
             return (
                 <div className='todos' key={todo.id}>
                     <p className="todo">{todo.id} : {todo.todo}</p>
+                    <button onClick={this.editTodo}>Edit todo</button>
                 </div>
             )
         })

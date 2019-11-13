@@ -8,9 +8,9 @@ const initState = {
 export const todoReducer = (state = initState, action) => {
     switch (action.type) {
         case 'ADD_TODO': {
-            console.log(action.todo)
-            // const newTodos = state.todos.push(action.todo)
-            // return { ...state, todos: newTodos }
+            state = {
+                ...state, todos: [...state.todos, action.todo]
+            }
         }
         default: {
             return state
