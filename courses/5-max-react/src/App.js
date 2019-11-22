@@ -8,36 +8,43 @@ import { UserInput } from './UserInput/UserInput'
 class App extends Component {
   state = {
     persons: [
-      { name: "Max", age: 28 },
-      { name: "Stef", age: 25 },
-      { name: "Iva", age: 20 }
+      { id: 'asf1', name: "Max", age: 28 },
+      { id: 'asf2', name: "Stef", age: 25 },
+      { id: 'asf3', name: "Iva", age: 20 }
     ],
     users: [
       { username: "Stefan" },
       { username: "Iva" }
-    ]
+    ],
+    showPersons: false
 
   };
 
 
-  switchNameHandler = (newName) => {
-    this.setState({
-      persons: [
-        { name: newName, age: 28 },
-        { name: "Stef", age: 25 },
-        { name: "Iva", age: 20 }
-      ]
-    })
-  }
+  // switchNameHandler = (newName) => {
+  //   this.setState({
+  //     persons: [
+  //       { name: newName, age: 28 },
+  //       { name: "Stef", age: 25 },
+  //       { name: "Iva", age: 20 }
+  //     ]
+  //   })
+  // }
 
-  nameChangedHandler = (event) => {
-    this.setState({
-      persons: [
-        { name: 'Max', age: 28 },
-        { name: event.target.value, age: 25 },
-        { name: "Iva", age: 20 }
-      ]
+  nameChangedHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id
     })
+
+    //const person = Object.assign({}, this.state.persons[personIndex]) old way
+    const person = { ...this.state.persons[personIndex] };
+    
+
+    person.name = event.target.value;
+    const persons = [...this.state.persons]
+    persons[personIndex] = person;
+
+    this.setState({ persons: persons })
   }
 
   userInput = (event) => {
@@ -48,6 +55,17 @@ class App extends Component {
     })
   }
 
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({ showPersons: !doesShow })
+  }
+
+  deletePersonHandler = (personIndex) => {
+    //const persons = this.state.persons.slice();
+    const persons = [...this.state.persons]  //it spreads out the elements in an array into a list of el, which get added to a new arr
+    persons.splice(personIndex, 1)
+    this.setState({ persons: persons })
+  }
 
   render() {
     const style = {
@@ -58,24 +76,32 @@ class App extends Component {
       cursor: "pointer"
     };
 
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          {this.state.persons.map((person, index) => {
+            return (<Person
+              click={() => this.deletePersonHandler(index)}
+              key={person.id}
+              name={person.name}
+              age={person.age}
+              changed={(event) => this.nameChangedHandler(event, person.id)}
+            />)
+          })}
+        </div>
+      );
+    }
+
+
+
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working</p>
-        <button style={style} onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button>
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-        />
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-          click={() => this.switchNameHandler('Max!')}
-          changed={this.nameChangedHandler}
-        >My Hobbies: Racing </Person>
-        <Person
-          name={this.state.persons[2].name}
-          age={this.state.persons[2].age} />
+        <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        {persons}
         <UserOutput username={this.state.users[0].username} />
         <UserInput username={this.state.users[0].username} userInput={this.userInput} />
         <UserOutput username={this.state.users[1].username} />
@@ -87,7 +113,7 @@ class App extends Component {
 
 export default App;
 
-
+//react hooks
 //import React, { useState } from 'react';
 
 // const app = (props) => {
@@ -127,4 +153,17 @@ export default App;
 
 
 
-
+//before map
+//          <Person
+//             name={this.state.persons[0].name}
+//             age={this.state.persons[0].age}
+//           />
+//           <Person
+//             name={this.state.persons[1].name}
+//             age={this.state.persons[1].age}
+//             click={() => this.switchNameHandler('Max!')}
+//             changed={this.nameChangedHandler}
+//           >My Hobbies: Racing </Person>
+//           <Person
+//             name={this.state.persons[2].name}
+//             age={this.state.persons[2].age} />
