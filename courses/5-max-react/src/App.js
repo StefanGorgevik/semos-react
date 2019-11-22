@@ -4,6 +4,8 @@ import './App.css';
 import Person from './Person/Person'
 import { UserOutput } from './UserOutput/UserOutput'
 import { UserInput } from './UserInput/UserInput'
+import ValidationComponent from './Person/ValidationComponent'
+import CharComponent from './Person/CharComponent'
 
 class App extends Component {
   state = {
@@ -16,20 +18,11 @@ class App extends Component {
       { username: "Stefan" },
       { username: "Iva" }
     ],
-    showPersons: false
-
+    showPersons: false,
+    word: ''
   };
 
 
-  // switchNameHandler = (newName) => {
-  //   this.setState({
-  //     persons: [
-  //       { name: newName, age: 28 },
-  //       { name: "Stef", age: 25 },
-  //       { name: "Iva", age: 20 }
-  //     ]
-  //   })
-  // }
 
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
@@ -38,8 +31,6 @@ class App extends Component {
 
     //const person = Object.assign({}, this.state.persons[personIndex]) old way
     const person = { ...this.state.persons[personIndex] };
-    
-
     person.name = event.target.value;
     const persons = [...this.state.persons]
     persons[personIndex] = person;
@@ -65,6 +56,17 @@ class App extends Component {
     const persons = [...this.state.persons]  //it spreads out the elements in an array into a list of el, which get added to a new arr
     persons.splice(personIndex, 1)
     this.setState({ persons: persons })
+  }
+
+  countChar = (event) => {
+    this.setState({ word: event.target.value })
+  }
+
+  deleteChar = (index) => {
+    const text = this.state.word.split('');
+    text.splice(index, 1);
+    const updatedText = text.join('')
+    this.setState({word: updatedText})
   }
 
   render() {
@@ -94,7 +96,9 @@ class App extends Component {
       );
     }
 
-
+    let charList = this.state.word.split('').map((char, index) => {
+      return <CharComponent clicked={() => this.deleteChar(index)} key={index} character={char}/>
+    })
 
     return (
       <div className="App">
@@ -102,10 +106,18 @@ class App extends Component {
         <p>This is really working</p>
         <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
-        <UserOutput username={this.state.users[0].username} />
-        <UserInput username={this.state.users[0].username} userInput={this.userInput} />
-        <UserOutput username={this.state.users[1].username} />
-        <UserInput username={this.state.users[1].username} userInput={this.userInput} />
+        <div>
+          <input type="text" onChange={this.countChar} value={this.state.word} />
+          <p>This word has {this.state.word.length} characters!</p>
+          <ValidationComponent chars={this.state.word.length} />
+          {charList}
+        </div>
+        <div>
+          <UserOutput username={this.state.users[0].username} />
+          <UserInput username={this.state.users[0].username} userInput={this.userInput} />
+          <UserOutput username={this.state.users[1].username} />
+          <UserInput username={this.state.users[1].username} userInput={this.userInput} />
+        </div>
       </div>
     );
   }
@@ -167,3 +179,14 @@ export default App;
 //           <Person
 //             name={this.state.persons[2].name}
 //             age={this.state.persons[2].age} />
+
+
+  // switchNameHandler = (newName) => {
+  //   this.setState({
+  //     persons: [
+  //       { name: newName, age: 28 },
+  //       { name: "Stef", age: 25 },
+  //       { name: "Iva", age: 20 }
+  //     ]
+  //   })
+  // }
