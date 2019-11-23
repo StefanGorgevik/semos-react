@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 
+//import Radium, { StyleRoot } from 'radium'
+
 import Person from './Person/Person'
-import { UserOutput } from './UserOutput/UserOutput'
-import { UserInput } from './UserInput/UserInput'
+// import { UserOutput } from './UserOutput/UserOutput'
+// import { UserInput } from './UserInput/UserInput'
 import ValidationComponent from './Person/ValidationComponent'
 import CharComponent from './Person/CharComponent'
 
@@ -22,28 +24,16 @@ class App extends Component {
     word: ''
   };
 
-
-
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id
     })
-
     //const person = Object.assign({}, this.state.persons[personIndex]) old way
     const person = { ...this.state.persons[personIndex] };
     person.name = event.target.value;
     const persons = [...this.state.persons]
     persons[personIndex] = person;
-
     this.setState({ persons: persons })
-  }
-
-  userInput = (event) => {
-    this.setState({
-      users: [
-        { username: event.target.value },
-        { username: event.target.value }]
-    })
   }
 
   togglePersonsHandler = () => {
@@ -66,12 +56,13 @@ class App extends Component {
     const text = this.state.word.split('');
     text.splice(index, 1);
     const updatedText = text.join('')
-    this.setState({word: updatedText})
+    this.setState({ word: updatedText })
   }
 
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -94,31 +85,36 @@ class App extends Component {
           })}
         </div>
       );
+      style.backgroundColor = 'red'
     }
 
     let charList = this.state.word.split('').map((char, index) => {
-      return <CharComponent clicked={() => this.deleteChar(index)} key={index} character={char}/>
+      return <CharComponent clicked={() => this.deleteChar(index)} key={index} character={char} />
     })
 
+    const classes = [];
+
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold')
+    }
+
+
     return (
-      <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <p>This is really working</p>
-        <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
-        {persons}
-        <div>
-          <input type="text" onChange={this.countChar} value={this.state.word} />
-          <p>This word has {this.state.word.length} characters!</p>
-          <ValidationComponent chars={this.state.word.length} />
-          {charList}
+        <div className="App">
+          <h1>Hi, I'm a React App</h1>
+          <p className={classes.join(' ')}>Dynamical styles</p>
+          <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+          {persons}
+          <div>
+            <input type="text" onChange={this.countChar} value={this.state.word} />
+            <p>This word has {this.state.word.length} characters!</p>
+            <ValidationComponent chars={this.state.word.length} />
+            {charList}
+          </div>
         </div>
-        <div>
-          <UserOutput username={this.state.users[0].username} />
-          <UserInput username={this.state.users[0].username} userInput={this.userInput} />
-          <UserOutput username={this.state.users[1].username} />
-          <UserInput username={this.state.users[1].username} userInput={this.userInput} />
-        </div>
-      </div>
     );
   }
 }
@@ -190,3 +186,21 @@ export default App;
   //     ]
   //   })
   // }
+
+
+  //User input output assignment
+
+  // userInput = (event) => {
+  //   this.setState({
+  //     users: [
+  //       { username: event.target.value },
+  //       { username: event.target.value }]
+  //   })
+  // }
+
+  // <div>
+  //         <UserOutput username={this.state.users[0].username} />
+  //         <UserInput username={this.state.users[0].username} userInput={this.userInput} />
+  //         <UserOutput username={this.state.users[1].username} />
+  //         <UserInput username={this.state.users[1].username} userInput={this.userInput} />
+  //       </div>
