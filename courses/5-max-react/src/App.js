@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 
 //import Radium, { StyleRoot } from 'radium'
 
@@ -60,16 +60,9 @@ class App extends Component {
   }
 
   render() {
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: "pointer"
-    };
-
+   
     let persons = null;
+    let btnClass = null
 
     if (this.state.showPersons) {
       persons = (
@@ -85,28 +78,29 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = 'red'
+      btnClass = classes.Red;
     }
 
     let charList = this.state.word.split('').map((char, index) => {
       return <CharComponent clicked={() => this.deleteChar(index)} key={index} character={char} />
     })
 
-    const classes = [];
+    const assignedClasses = [];
 
     if (this.state.persons.length <= 2) {
-      classes.push('red');
+      assignedClasses.push(classes.red);
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold')
+      assignedClasses.push(classes.bold)
     }
 
 
     return (
-        <div className="App">
+        <div className={classes.App}>
           <h1>Hi, I'm a React App</h1>
-          <p className={classes.join(' ')}>Dynamical styles</p>
-          <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+          <p className={assignedClasses.join(' ')}>Dynamical styles</p>
+          <button className={btnClass}
+           onClick={this.togglePersonsHandler}>Toggle Persons</button>
           {persons}
           <div>
             <input type="text" onChange={this.countChar} value={this.state.word} />
