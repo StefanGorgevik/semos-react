@@ -3,7 +3,7 @@ import classes from './App.css';
 
 //import Radium, { StyleRoot } from 'radium'
 
-import Person from '../Person/Person'
+import Person from '../Persons/Person/Person'
 // import { UserOutput } from './UserOutput/UserOutput'
 // import { UserInput } from './UserInput/UserInput'
 import ValidationComponent from './ValidationComponent'
