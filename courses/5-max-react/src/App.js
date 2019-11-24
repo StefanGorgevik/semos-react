@@ -8,6 +8,7 @@ import Person from './Person/Person'
 // import { UserInput } from './UserInput/UserInput'
 import ValidationComponent from './Person/ValidationComponent'
 import CharComponent from './Person/CharComponent'
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 class App extends Component {
   state = {
@@ -60,7 +61,7 @@ class App extends Component {
   }
 
   render() {
-   
+
     let persons = null;
     let btnClass = null
 
@@ -68,13 +69,14 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            return (<Person
-              click={() => this.deletePersonHandler(index)}
-              key={person.id}
-              name={person.name}
-              age={person.age}
-              changed={(event) => this.nameChangedHandler(event, person.id)}
-            />)
+            return (<ErrorBoundary key={person.id}>
+              <Person
+                click={() => this.deletePersonHandler(index)}
+                name={person.name}
+                age={person.age}
+                changed={(event) => this.nameChangedHandler(event, person.id)}
+              />
+            </ErrorBoundary>)
           })}
         </div>
       );
@@ -96,19 +98,19 @@ class App extends Component {
 
 
     return (
-        <div className={classes.App}>
-          <h1>Hi, I'm a React App</h1>
-          <p className={assignedClasses.join(' ')}>Dynamical styles</p>
-          <button className={btnClass}
-           onClick={this.togglePersonsHandler}>Toggle Persons</button>
-          {persons}
-          <div>
-            <input type="text" onChange={this.countChar} value={this.state.word} />
-            <p>This word has {this.state.word.length} characters!</p>
-            <ValidationComponent chars={this.state.word.length} />
-            {charList}
-          </div>
+      <div className={classes.App}>
+        <h1>Hi, I'm a React App</h1>
+        <p className={assignedClasses.join(' ')}>Dynamical styles</p>
+        <button className={btnClass}
+          onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        {persons}
+        <div>
+          <input type="text" onChange={this.countChar} value={this.state.word} />
+          <p>This word has {this.state.word.length} characters!</p>
+          <ValidationComponent chars={this.state.word.length} />
+          {charList}
         </div>
+      </div>
     );
   }
 }
