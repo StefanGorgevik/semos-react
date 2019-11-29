@@ -8,23 +8,20 @@ class Weather extends React.Component {
             show: false
         }
     }
-    componentDidMount() {
-        console.log(this.props.weather.weather[0])
-    }
+    
 
     render() {
-        console.log(this.props.weather.weather[0])
         return (
-            <React.Fragment>
-              <h1>Weather</h1>
-            </React.Fragment>
+            <div>
+                <p>{this.props.weather.weather.main}</p>
+            </div>
         )
     }
 }
 
 function mapStateToProps(state) {
     return {
-        weather: state.weatherReducer
+        weather: state.weatherReducer.weather
     }
 }
 
