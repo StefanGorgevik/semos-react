@@ -1,3 +1,4 @@
 node_modules
 my-app/src/city.list.json.gz
 courses/5-max-react/burger-builder/src/hoc/Aux.js
+courses/5-max-react/burger-builder/src/hoc/Auxx/Aux.js
