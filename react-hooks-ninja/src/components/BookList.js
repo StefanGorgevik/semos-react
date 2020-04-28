@@ -14,20 +14,18 @@ const BookList = () => {
     }, [books])
     const theme = isLightTheme ? light : dark
 
-    let bookList = <p>Loading...</p>
-    if (books) {
-        bookList = books.map((book, i) => {
-            return <Book title={book.title} key={book + i} background={theme.ui} />
-        })
-    }
 
-    return (
+
+    return books.length ? (
         <div className="book-list" style={{ background: theme.bg, color: theme.syntax }}>
             <ul>
-                {bookList}
+                {books.map(book =>
+                    <Book book={book} key={book.id} background={theme.ui} />)}
             </ul>
         </div>
-    );
+    ) : (
+            <p>No books for you too read...</p>
+        )
 }
 
 export default BookList;
